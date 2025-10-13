@@ -2,10 +2,10 @@
 
 one:
   quantity: 1
-  food: one
+  food: sugar
   recipe: one
 
 two:
   quantity: 1
-  food: two
+  food: flour
   recipe: two

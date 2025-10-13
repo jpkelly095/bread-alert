@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+sugar:
+  name: Sugar
   serving_size: 1
-  carbs: 1
+  carbs_per_serving: 1
 
-two:
-  name: MyString
-  serving_size: 1
-  carbs: 1
+flour:
+  name: Flour
+  serving_size: 30
+  carbs_per_serving: 23
