@@ -9,3 +9,8 @@ flour:
   name: Flour
   serving_size: 30
   carbs_per_serving: 23
+
+apple:
+  name: Apple
+  serving_size: 154
+  carbs_per_serving: 22

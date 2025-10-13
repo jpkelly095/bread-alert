@@ -1,9 +1,5 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  serving_size: 1
-
-two:
-  name: MyString
-  serving_size: 1
+bagels:
+  name: Bagels
+  serving_size: 1600
