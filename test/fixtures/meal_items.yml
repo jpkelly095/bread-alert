@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  item: one
-  item_type: Item
-  meal: one
-  quantity: 1
+apple:
+  item_type: Food
+  item_id: <%= ActiveRecord::FixtureSet.identify(:apple) %>
+  meal: breakfast
+  quantity: 100
 
-two:
-  item: two
-  item_type: Item
-  meal: two
-  quantity: 1
+bagel:
+  item_type: Recipe
+  item_id: <%= ActiveRecord::FixtureSet.identify(:bagels) %>
+  meal: breakfast
+  quantity: 90

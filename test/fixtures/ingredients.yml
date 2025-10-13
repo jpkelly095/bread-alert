@@ -9,8 +9,3 @@ bagels_flour:
   quantity: 1000
   food: flour
   recipe: bagels
-
-apple_pie_sugar:
-  quantity: 150
-  food: sugar
-  recipe: apple_pie

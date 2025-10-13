@@ -1,7 +1,7 @@
 require "test_helper"
 
 class MealTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "total carbs for breakfast" do
+    assert_equal 60, meals(:breakfast).total_carbs
+  end
 end
