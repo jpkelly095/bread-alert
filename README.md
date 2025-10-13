@@ -17,6 +17,7 @@ if I even remembered to write it all down, and then calculating the total carbs 
 ### Solution
 
 Bread Alert is my attempt to make this whole process a lot easier and more intuitive, by self-hosting a Rails app to:
+
 1. Act as a one-stop shop for food and recipe carb counts (no more scattered notes or scrolling through my phone trying to find the carb counts)
 2. Do all the carb counting math for me (no more calculator and user error)
 
@@ -34,6 +35,7 @@ Bread Alert is my attempt to make this whole process a lot easier and more intui
 2. Install [Rails](https://guides.rubyonrails.org/install_ruby_on_rails.html)
 3. Clone this repo
 4. Run `bundle install` in the project root directory
+5. Install and run postgresql on your machine
 
 ### Running Locally
 
