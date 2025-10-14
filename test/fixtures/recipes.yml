@@ -3,3 +3,7 @@
 bagels:
   name: Bagels
   serving_size: 1600
+
+apple_pie:
+  name: Apple Pie
+  serving_size: 1860

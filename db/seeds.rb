@@ -17,6 +17,9 @@ pb = Food.create(name: "Peanut Butter", serving_size: 32, carbs_per_serving: 8)
 cs = Food.create(name: "Corn Starch", serving_size: 8, carbs_per_serving: 7)
 white_rice = Food.create(name: "White Rice", serving_size: 120, carbs_per_serving: 48, notes: "Extended 2u bolus over 2 hours")
 
+# Containers
+pie_dish = Container.create(name: "Pyrex Pie Dish", weight: 910)
+
 # Recipes
 bagels = Recipe.create(name: "Bagel", serving_size: 1563)
 bagels.ingredients.create(food: flour, quantity: 1000)
@@ -28,6 +31,10 @@ apple_pie.ingredients.create(food: sugar, quantity: 150)
 apple_pie.ingredients.create(food: apple, quantity: 964)
 apple_pie.ingredients.create(food: cs, quantity: 14)
 apple_pie.ingredients.create(food: juice, quantity: 80)
+
+# Add the pie dish to the apple pie recipe
+apple_pie.container = pie_dish
+apple_pie.save
 
 # Meals
 breakfast = Meal.create()
