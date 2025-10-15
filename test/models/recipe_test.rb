@@ -11,7 +11,7 @@ class RecipeTest < ActiveSupport::TestCase
     assert_equal 767, bagels.carbs_per_serving
   end
 
-  test "bagels carbs for" do
+  test "bagels carbs_for" do
     bagels = recipes(:bagels)
     assert_equal 46, bagels.carbs_for(90) # should round to 46
 
@@ -19,5 +19,18 @@ class RecipeTest < ActiveSupport::TestCase
     sugar = ingredients(:bagels_sugar)
     bagels.ingredients.delete(sugar)
     assert_equal 43, bagels.carbs_for(90)
+  end
+
+  test "apple pie carbs_for without container" do
+    apple_pie = recipes(:apple_pie)
+
+    assert_equal 27, apple_pie.carbs_for(90)
+  end
+
+  test "apple pie carbs_for with container" do
+    apple_pie = recipes(:apple_pie)
+    apple_pie.container = containers(:pie_dish)
+
+    assert_equal 52, apple_pie.carbs_for(90)
   end
 end

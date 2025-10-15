@@ -14,3 +14,13 @@ apple:
   name: Apple
   serving_size: 154
   carbs_per_serving: 22
+
+corn_starch:
+  name: Corn Starch
+  serving_size: 8
+  carbs_per_serving: 7
+
+apple_juice:
+  name: Apple Juice
+  serving_size: 240
+  carbs_per_serving: 35

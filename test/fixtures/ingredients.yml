@@ -9,3 +9,29 @@ bagels_flour:
   quantity: 1000
   food: flour
   recipe: bagels
+
+apple_pie_sugar:
+  quantity: 150
+  food: sugar
+  recipe: apple_pie
+
+apple_pie_flour:
+  quantity: 314
+  food: flour
+  recipe: apple_pie
+
+apple_pie_apple:
+  quantity: 964
+  food: apple
+  recipe: apple_pie
+
+apple_pie_corn_starch:
+  quantity: 14
+  food: corn_starch
+  recipe: apple_pie
+
+apple_pie_apple_juice:
+  quantity: 80
+  food: apple_juice
+  recipe: apple_pie
+
