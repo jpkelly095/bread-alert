@@ -1,0 +1,29 @@
+<%= form_with model: food do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :serving_size %>
+    <%= form.number_field :serving_size, min: 0, step: 1 %>
+  </div>
+
+  <div>
+      <%= form.label :carbs_per_serving %>
+      <%= form.number_field :carbs_per_serving, min: 0, step: 1 %>
+  </div>
+  
+  <div>
+    <%= form.label :notes %>
+    <%= form.rich_text_area :notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
