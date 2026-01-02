@@ -1,0 +1,76 @@
+<%= form_with model: recipe do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :serving_size, "Serving size (g)" %>
+    <%= form.number_field :serving_size, min: 0, step: 1 %>
+  </div>
+  
+  <div>
+    <%= form.label :container %>
+    <%= form.collection_select :container_id, Container.all, :id, :name, include_blank: true %>
+  </div>
+  
+  <div data-controller="nested-form">
+    <h3>Ingredients</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity (g)</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody data-nested-form-target="container">
+        <%= form.fields_for :ingredients do |ingredients_form| %>
+          <tr>
+            <td>
+              <%= ingredients_form.hidden_field :id %>
+              <%= ingredients_form.collection_select :food_id, Food.all, :id, :name, { prompt: "Select Food" } %>
+            </td>
+            <td>
+              <%= ingredients_form.number_field :quantity, min: 0, step: 1 %>
+            </td>
+            <td>
+              <%= ingredients_form.checkbox :_destroy %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+    <button type="button" data-action="click->nested-form#add">Add Ingredient</button>
+    
+    <template data-nested-form-target="template">
+      <tr>
+        <td>
+          <%= select_tag "recipe[ingredients_attributes][NEW_RECORD][food_id]", 
+                        options_from_collection_for_select(Food.all, :id, :name), 
+                        { prompt: "Select Food" } %>
+        </td>
+        <td>
+          <%= number_field_tag "recipe[ingredients_attributes][NEW_RECORD][quantity]", nil, min: 0, step: 1 %>
+        </td>
+        <td>
+          <%= check_box_tag "recipe[ingredients_attributes][NEW_RECORD][_destroy]", 1, false %>
+        </td>
+      </tr>
+    </template>
+  </div>
+
+  <div>
+    <%= form.label :notes %>
+    <%= form.rich_text_area :notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

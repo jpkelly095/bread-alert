@@ -1,0 +1,32 @@
+<h1><%= @recipe.name %></h1>
+
+<h3>Nutrition Information</h3>
+<table>
+    <tr>
+        <th>Serving size</th>
+        <td><%= @recipe.serving_size %> g</td>
+    </tr>
+    <tr>
+        <th>Carbs per serving</th>
+        <td><%= @recipe.carbs_per_serving %> g</td>
+    </tr>
+</table>
+
+<h3>Ingredients</h3>
+<table>
+    <tbody>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+            <td><%= ingredient.food.name %></td>
+            <td><%= ingredient.quantity %>g</td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<h3>Notes</h3>
+<p><%= @recipe.notes %></p>
+
+<%= link_to "Back", recipes_path %>
+<%= link_to "Edit", edit_recipe_path(@recipe) %>
+<%= button_to "Delete", @recipe, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

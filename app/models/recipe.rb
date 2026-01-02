@@ -9,6 +9,8 @@ class Recipe < ApplicationRecord
 
   validate :weight_must_be_positive
 
+  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
+
   def carbs_per_serving
     ingredients.sum do |ingredient|
       ingredient.food.carbs_for(ingredient.quantity)

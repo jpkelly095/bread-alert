@@ -1,0 +1,20 @@
+<h1><%= @food.name %></h1>
+
+<h3>Nutrition Information</h3>
+<table>
+    <tr>
+        <th>Serving size</th>
+        <td><%= @food.serving_size %> g</td>
+    </tr>
+    <tr>
+        <th>Carbs per serving</th>
+        <td><%= @food.carbs_per_serving %> g</td>
+    </tr>
+</table>
+
+<h3>Notes</h3>
+<p><%= @food.notes %></p>
+
+<%= link_to "Back", foods_path %>
+<%= link_to "Edit", edit_food_path(@food) %>
+<%= button_to "Delete", @food, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
