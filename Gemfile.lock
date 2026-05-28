@@ -113,13 +113,6 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm-linux-gnu)
-    ffi (1.17.2-arm-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -127,9 +120,7 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    image_processing (1.14.0)
-      mini_magick (>= 4.9.5, < 6)
-      ruby-vips (>= 2.0.17, < 3)
+    image_processing (2.0.1)
     importmap-rails (2.2.2)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -173,8 +164,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
-    mini_magick (5.3.1)
-      logger
     mini_mime (1.1.5)
     minitest (5.26.0)
     msgpack (1.8.0)
@@ -208,6 +197,7 @@ GEM
     nokogiri (1.18.10-x86_64-linux-musl)
       racc (~> 1.4)
     observer (0.1.2)
+    open3 (0.2.1)
     ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.9.0)
@@ -275,8 +265,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rbs (3.9.5)
+    rbs (4.0.2)
       logger
+      prism (>= 1.6.0)
+      tsort
     rdoc (6.15.0)
       erb
       psych (>= 4.0.0)
@@ -316,9 +308,6 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.5)
-      ffi (~> 1.12)
-      logger
     rubyzip (3.2.1)
     securerandom (0.4.1)
     selenium-webdriver (4.38.0)
@@ -327,20 +316,22 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    solargraph (0.57.0)
+    solargraph (0.59.2)
+      ast (~> 2.4.3)
       backport (~> 1.2)
       benchmark (~> 0.4)
-      bundler (~> 2.0)
+      bundler (>= 2.0)
       diff-lcs (~> 1.4)
       jaro_winkler (~> 1.6, >= 1.6.1)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
       logger (~> 1.6)
       observer (~> 0.1)
+      open3 (~> 0.2.1)
       ostruct (~> 0.6)
       parser (~> 3.0)
       prism (~> 1.4)
-      rbs (>= 3.6.1, <= 4.0.0.dev.4)
+      rbs (>= 3.10.0)
       reverse_markdown (~> 3.0)
       rubocop (~> 1.76)
       thor (~> 1.0)
@@ -427,7 +418,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
-  image_processing (~> 1.2)
+  image_processing (~> 2.0)
   importmap-rails
   jbuilder
   kamal
