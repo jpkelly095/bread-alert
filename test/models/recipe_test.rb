@@ -3,12 +3,12 @@ require "test_helper"
 class RecipeTest < ActiveSupport::TestCase
   test "bagels carbs per serving" do
     bagels = recipes(:bagels)
-    assert_equal 813, bagels.carbs_per_serving
+    assert_equal 813, bagels.total_carbs
 
-    # carbs_per_serving should change when sugar is deleted
+    # total_carbs should change when sugar is deleted
     sugar = ingredients(:bagels_sugar)
     bagels.ingredients.delete(sugar)
-    assert_equal 767, bagels.carbs_per_serving
+    assert_equal 767, bagels.total_carbs
   end
 
   test "bagels carbs_for" do

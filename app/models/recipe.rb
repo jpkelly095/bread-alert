@@ -4,32 +4,32 @@ class Recipe < ApplicationRecord
   has_many :foods, through: :ingredients
   belongs_to :container, optional: true
 
-  validates :name, :serving_size, presence: true
-  validates :serving_size, numericality: { greater_than: 0 }
+  validates :name, :total_weight, presence: true
+  validates :total_weight, numericality: { greater_than: 0 }
 
   validate :weight_must_be_positive
 
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
 
-  def carbs_per_serving
+  def total_carbs
     ingredients.sum do |ingredient|
       ingredient.food.carbs_for(ingredient.quantity)
     end
   end
 
   def carbs_for(amount)
-    (amount.fdiv(weight) * carbs_per_serving).round
+    (amount.fdiv(weight) * total_carbs).round
   end
 
   private
 
   def weight
-    container.nil? ? serving_size : serving_size - container.weight
+    container.nil? ? total_weight : total_weight - container.weight
   end
 
   def weight_must_be_positive
-    if container.present? && container.weight >= serving_size
-      errors.add(:serving_size, "must be greater than the container weight")
+    if container.present? && container.weight >= total_weight
+      errors.add(:total_weight, "must be greater than the container weight")
     end
   end
 end
