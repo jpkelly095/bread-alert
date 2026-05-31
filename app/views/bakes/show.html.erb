@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bake %>
+
+<div>
+  <%= link_to "Edit this bake", edit_bake_path(@bake) %> |
+  <%= link_to "Back to bakes", bakes_path %>
+
+  <%= button_to "Destroy this bake", @bake, method: :delete %>
+</div>

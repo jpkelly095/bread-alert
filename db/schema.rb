@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_28_004315) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_30_233859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_004315) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bakes", force: :cascade do |t|
+    t.date "baked_on"
+    t.bigint "container_id"
+    t.datetime "created_at", null: false
+    t.bigint "recipe_id", null: false
+    t.integer "total_carbs"
+    t.integer "total_weight"
+    t.datetime "updated_at", null: false
+    t.index ["container_id"], name: "index_bakes_on_container_id"
+    t.index ["recipe_id"], name: "index_bakes_on_recipe_id"
+  end
+
   create_table "containers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
@@ -80,17 +92,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_004315) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.bigint "container_id"
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.text "notes"
-    t.integer "total_weight", null: false
     t.datetime "updated_at", null: false
-    t.index ["container_id"], name: "index_recipes_on_container_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bakes", "containers"
+  add_foreign_key "bakes", "recipes"
   add_foreign_key "ingredients", "foods"
   add_foreign_key "ingredients", "recipes"
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bagels:
+  total_weight: 1600
+  total_carbs: 813
+  baked_on: 2026-05-24
+  recipe: bagels
+
+apple_pie:
+  total_weight: 1860
+  total_carbs: 553
+  baked_on: 2026-05-25
+  recipe: apple_pie

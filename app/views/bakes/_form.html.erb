@@ -1,0 +1,42 @@
+<%= form_with(model: bake) do |form| %>
+  <% if bake.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bake.errors.count, "error") %> prohibited this bake from being saved:</h2>
+
+      <ul>
+        <% bake.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :baked_on, style: "display: block" %>
+    <%= form.date_field :baked_on %>
+  </div>
+
+  <div>
+    <%= form.label :total_carbs, style: "display: block" %>
+    <%= form.number_field :total_carbs %>
+  </div>
+
+  <div>
+    <%= form.label :total_weight, style: "display: block" %>
+    <%= form.number_field :total_weight %>
+  </div>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.text_field :recipe_id %>
+  </div>
+
+  <div>
+    <%= form.label :container_id, style: "display: block" %>
+    <%= form.text_field :container_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

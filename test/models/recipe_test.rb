@@ -1,7 +1,7 @@
 require "test_helper"
 
 class RecipeTest < ActiveSupport::TestCase
-  test "bagels carbs per serving" do
+  test "bagels total carbs" do
     bagels = recipes(:bagels)
     assert_equal 813, bagels.total_carbs
 
@@ -9,28 +9,5 @@ class RecipeTest < ActiveSupport::TestCase
     sugar = ingredients(:bagels_sugar)
     bagels.ingredients.delete(sugar)
     assert_equal 767, bagels.total_carbs
-  end
-
-  test "bagels carbs_for" do
-    bagels = recipes(:bagels)
-    assert_equal 46, bagels.carbs_for(90) # should round to 46
-
-    # carbs_for should change when sugar is deleted
-    sugar = ingredients(:bagels_sugar)
-    bagels.ingredients.delete(sugar)
-    assert_equal 43, bagels.carbs_for(90)
-  end
-
-  test "apple pie carbs_for without container" do
-    apple_pie = recipes(:apple_pie)
-
-    assert_equal 27, apple_pie.carbs_for(90)
-  end
-
-  test "apple pie carbs_for with container" do
-    apple_pie = recipes(:apple_pie)
-    apple_pie.container = containers(:pie_dish)
-
-    assert_equal 52, apple_pie.carbs_for(90)
   end
 end

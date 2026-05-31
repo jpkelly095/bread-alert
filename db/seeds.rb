@@ -21,17 +21,22 @@ white_rice = Food.create(name: "White Rice", serving_size: 120, carbs_per_servin
 pie_dish = Container.create(name: "Pyrex Pie Dish", weight: 910)
 
 # Recipes
-bagels = Recipe.create(name: "Bagel", total_weight: 1563)
+bagels = Recipe.create(name: "Bagel")
 bagels.ingredients.create(food: flour, quantity: 1000)
 bagels.ingredients.create(food: sugar, quantity: 46)
 
-apple_pie = Recipe.create(name: "Apple Pie", total_weight: 950)
+apple_pie = Recipe.create(name: "Apple Pie")
 apple_pie.ingredients.create(food: flour, quantity: 314)
 apple_pie.ingredients.create(food: sugar, quantity: 150)
 apple_pie.ingredients.create(food: apple, quantity: 964)
 apple_pie.ingredients.create(food: cs, quantity: 14)
 apple_pie.ingredients.create(food: juice, quantity: 80)
 
-# Add the pie dish to the apple pie recipe
-apple_pie.container = pie_dish
-apple_pie.save
+# Bakes
+first_bagel = bagels.bakes.create(total_weight: 1686, baked_on: 2.weeks.ago)
+latest_bagel = bagels.bakes.create(total_weight: 1660, baked_on: 1.day.ago)
+first_apple_pie = apple_pie.bakes.create(total_weight: 950, baked_on: 1.month.ago)
+
+# Add the pie dish to the apple pie bake
+first_apple_pie.container = pie_dish
+first_apple_pie.save
