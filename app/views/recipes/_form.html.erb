@@ -7,16 +7,6 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
-  <div>
-    <%= form.label :total_weight, "Total weight (g)" %>
-    <%= form.number_field :total_weight, min: 0, step: 1 %>
-  </div>
-  
-  <div>
-    <%= form.label :container %>
-    <%= form.collection_select :container_id, Container.all, :id, :name, include_blank: true %>
-  </div>
   
   <div data-controller="nested-form">
     <h3>Ingredients</h3>
@@ -69,6 +59,26 @@
     <%= form.label :notes %>
     <%= form.rich_text_area :notes %>
   </div>
+
+  <% if @recipe.new_record? %>
+    <div>
+      <%= form.fields_for :bakes do |bakes_form| %>
+        <h3>Bakes</h3>
+        <div>
+          <%= bakes_form.label :baked_on, "Baked on" %>
+          <%= bakes_form.date_field :baked_on %>
+        </div>
+        <div>
+          <%= bakes_form.label :total_weight, "Total weight (g)" %>
+          <%= bakes_form.number_field :total_weight, min: 0, step: 1 %>
+        </div>
+        <div>
+          <%= bakes_form.label :container %>
+          <%= bakes_form.collection_select :container_id, Container.all, :id, :name, include_blank: true %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>

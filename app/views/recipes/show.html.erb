@@ -1,18 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
 <h1><%= @recipe.name %></h1>
+
+<div>
+
+</div>
+
+<div>
+    <h3>Bakes</h3>
+    <% if @recipe.bakes.any? %>
+        <% latest = @recipe.bakes.order(:baked_on).last %>
+        <%= link_to latest.baked_on.to_fs(:long_ordinal), bake_path(latest) %> |
+    <% end %>
+    <%= link_to "New Bake", new_recipe_bake_path(@recipe) %>
+</div>
 
 <h3>Nutrition Information</h3>
 <table>
-    <tr>
-        <th>Total Weight</th>
-        <td><%= @recipe.total_weight %> g</td>
-    </tr>
     <tr>
         <th>Total Carbs</th>
         <td><%= @recipe.total_carbs %> g</td>
     </tr>
 </table>
 
-<h3>Ingredients</h3>
+<h4>Ingredients</h4>
 <table>
     <tbody>
         <% @recipe.ingredients.each do |ingredient| %>
@@ -24,9 +35,14 @@
     </tbody>
 </table>
 
-<h3>Notes</h3>
-<p><%= @recipe.notes %></p>
+<% if @recipe.notes.present? %>
+    <h3>Notes</h3>
+    <p><%= @recipe.notes %></p>
+<% end %>
 
-<%= link_to "Back", recipes_path %>
-<%= link_to "Edit", edit_recipe_path(@recipe) %>
-<%= button_to "Delete", @recipe, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<div>
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+    <%= link_to "Back to recipes", recipes_path %>
+    <hr>
+    <%= button_to "Destroy this recipe", @recipe, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+</div>

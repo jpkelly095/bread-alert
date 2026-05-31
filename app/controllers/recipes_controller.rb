@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.ingredients.build
+    @recipe.bakes.build(baked_on: Date.current)
   end
 
   def create
@@ -40,11 +41,12 @@ class RecipesController < ApplicationController
 
   private
     def set_recipe
-      @recipe = Recipe.includes(:container, ingredients: :food).find(params[:id])
+      @recipe = Recipe.includes(:bakes, ingredients: :food).find(params[:id])
     end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :notes, :total_weight, :container_id,
-        ingredients_attributes: [ :id, :food_id, :quantity, :_destroy ])
+      params.require(:recipe).permit(:name, :notes, :total_weight,
+        ingredients_attributes: [ :id, :food_id, :quantity, :_destroy ],
+        bakes_attributes: [ :id, :baked_on, :total_weight, :container_id ])
     end
 end

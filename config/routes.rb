@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :containers
-  resources :ingredients
-  resources :recipes
+  resources :recipes do
+    resources :bakes, only: [ :new, :create ], shallow: true
+  end
+  resources :bakes, only: [ :show, :edit, :update, :destroy ]
   resources :foods
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

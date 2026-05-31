@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @bake.recipe.name %> - <%= @bake.baked_on.to_fs(:long_ordinal) %></h1>
+
+<table>
+  <tr>
+    <th>Total Weight</th>
+    <td><%= @bake.total_weight %> g</td>
+  </tr>
+  <tr>
+      <th>Total Carbs</th>
+      <td><%= @bake.total_carbs %> g</td>
+  </tr>
+  <% if @bake.container.present? %>
+    <tr>
+      <th>Container</th>
+      <td><%= @bake.container.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div>
+  <div>
+  <%= link_to "Edit this bake", edit_bake_path(@bake) %> |
+  <%= link_to "Back to recipe", recipe_path(@bake.recipe) %>
+  <hr>
+  <%= button_to "Destroy this bake", @bake, method: :delete %>
+</div>

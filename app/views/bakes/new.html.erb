@@ -1,0 +1,7 @@
+<% content_for :title, "New " + @bake.recipe.name %>
+
+<h1>New <%= @bake.recipe.name %></h1>
+
+<%= render "form", bake: @bake %>
+
+<br>

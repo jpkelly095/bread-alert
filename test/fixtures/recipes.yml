@@ -2,8 +2,6 @@
 
 bagels:
   name: Bagels
-  total_weight: 1600
 
 apple_pie:
   name: Apple Pie
-  total_weight: 1860
